@@ -1,4 +1,5 @@
 ﻿using AM.ApllicationCore.Domain;
+using AM.ApllicationCore.Interface;
 using AM.ApplicationCore.Domain;
 using AM.ApplicationCore.Interfaces;
 using System;
@@ -170,6 +171,27 @@ public double DurationAverage(string destination)
                      
 
          }
+        IGenericRepository<Flight> genericRepository;
+        public ServiceFlight(IGenericRepository<Flight> genericRepository)
+        {
+            this.genericRepository = genericRepository;
+
+        }
+        public void Add(Flight flight)
+        {
+            genericRepository.Add(flight);
+        }
+
+        public void Remove(Flight flight)
+        {
+            genericRepository.Delete(flight);
+        }
+
+        public IEnumerable<Flight> GetAll()
+        {
+            return genericRepository.GetAll();
+        }
+
         public ServiceFlight()
         {/*
             FlightDetailsDel = ShowFlifhtDetails;

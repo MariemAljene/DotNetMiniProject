@@ -72,8 +72,8 @@ sf.DestinationGroupedFlights();
 Console.WriteLine(sf.DurationAverageDel("Paris"));
 sf.FlightDetailsDel(TestData.p1);
 
-AMContext context = new AMContext();
-/*context.Flights.Add(TestData.F3);
+AMContext context = new AMContext();//INSTANCACIATION DE CONTEXT POUR AJOUTER 
+/*context.Flights.Add(TestData.F3);//ajouter a la base 
 context.SaveChanges();*/
 Console.WriteLine("Test");
 Console.WriteLine(context.Flights.First().MyPlane.Capacity) ;

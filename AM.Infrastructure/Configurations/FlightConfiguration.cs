@@ -18,7 +18,7 @@ namespace AM.Infrastructure.Configurations
                      .UsingEntity(t => t.ToTable("Reservation"));*/
             builder.HasOne(f => f.MyPlane)
                    .WithMany(p => p.Flights)
-                   .OnDelete(DeleteBehavior.ClientSetNull);//Delete en cascade 
+                   .OnDelete(DeleteBehavior.ClientSetNull);//Delete en cascade ne pas supprimier flight mais colonne forgein client soit nulle  
                   
             
         } 

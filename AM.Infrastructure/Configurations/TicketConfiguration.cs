@@ -13,11 +13,11 @@ namespace AM.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<Ticket> builder)
         {
-            builder.HasKey(t => new { t.PassangerFK, t.FlightFK });//Clé primaire composée 
+            builder.HasKey(t => new { t.PassangerFK, t.FlightFK });//Clée primaire composée 
             builder.HasOne(t => t.MyFlight)
                     .WithMany(f => f.Tickets)
                     .HasForeignKey(t=>t.FlightFK);
-            builder.HasOne(t => t.MyPassanger)
+            builder.HasOne(t => t.MyPassanger)//  My Passanger heya l variable de Ticket prop de navigation [] 
                    .WithMany(p => p.Tickets)
                    .HasForeignKey(t => t.PassangerFK);
         }
