@@ -35,7 +35,7 @@ Console.WriteLine(pass1.CheckProfil("mariem", "aljene"));
 pass1.PassangerType();
 Staff stf = new Staff();
 stf.PassangerType();
-ServiceFlight sf = new ServiceFlight(); 
+/*ServiceFlight sf = new ServiceFlight(); 
 sf.Flights = TestData.listFlights; 
 foreach(var flight in sf.getFlightDatesForEach("Paris"))
 {
@@ -65,12 +65,12 @@ Console.WriteLine("Les Top 3 Travellers");
 /*foreach (var f in sf.SeniorTravellers(TestData.F1))
 {
     Console.WriteLine(f);
-}*/
+}
 Console.WriteLine("Les vols par Destination  :");
 
-sf.DestinationGroupedFlights();
+//sf.DestinationGroupedFlights();
 Console.WriteLine(sf.DurationAverageDel("Paris"));
-sf.FlightDetailsDel(TestData.p1);
+sf.FlightDetailsDel(TestData.p1);*/
 
 AMContext context = new AMContext();//INSTANCACIATION DE CONTEXT POUR AJOUTER 
 /*context.Flights.Add(TestData.F3);//ajouter a la base 

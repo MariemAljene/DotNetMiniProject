@@ -17,6 +17,6 @@ namespace AM.ApllicationCore.Interface
         TEntity Get(Expression<Func<TEntity, bool>> where);//Recherche avec condition 
         void Delete(Expression<Func<TEntity, bool>> where);//Delete by condition
         IEnumerable<TEntity> GetMany(Expression<Func<TEntity, bool>> where);//GetAll avec condition
-
+        public void Commit();
     }
 }

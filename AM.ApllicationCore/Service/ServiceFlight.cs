@@ -1,5 +1,6 @@
 ﻿using AM.ApllicationCore.Domain;
 using AM.ApllicationCore.Interface;
+using AM.ApllicationCore.Service;
 using AM.ApplicationCore.Domain;
 using AM.ApplicationCore.Interfaces;
 using System;
@@ -14,7 +15,7 @@ using Plane = AM.ApllicationCore.Domain.Plane;
 
 namespace AM.ApplicationCore.Services
 {
-    public class ServiceFlight :IServicesFlight
+    public class ServiceFlight : Service<Flight>, IServicesFlight
     {
         public Action<Plane> FlightDetailsDel; 
         public Func <string,double> DurationAverageDel;
@@ -173,12 +174,12 @@ public double DurationAverage(string destination)
          }
         //IGenericRepository<Flight> genericRepository; 
         IUnitOfWork _unitOfWork;
-        public ServiceFlight(IUnitOfWork unitOfWork)
+        public ServiceFlight(IUnitOfWork unitOfWork ): base(unitOfWork)
         {
            _unitOfWork=unitOfWork;
 
         }
-        public void Add(Flight flight)
+       /* public void Add(Flight flight)
         {
             _unitOfWork.Repository<Flight>().Add(flight);
         }
@@ -191,12 +192,12 @@ public double DurationAverage(string destination)
         public IEnumerable<Flight> GetAll()
         {
             return _unitOfWork.Repository<Flight>().GetAll();
-        }
+        }*/
 
-        public ServiceFlight()
-        {/*
+       /* public ServiceFlight()
+        {
             FlightDetailsDel = ShowFlifhtDetails;
-            DurationAverageDel = DurationAverage;*/
+            DurationAverageDel = DurationAverage;
             FlightDetailsDel = p =>
             {
                 var req = from flight in Flights
@@ -216,7 +217,7 @@ public double DurationAverage(string destination)
                 return req.Average();
             };
 
-        }
+        }*/
 
 
     }

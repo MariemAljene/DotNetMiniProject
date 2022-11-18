@@ -1,4 +1,5 @@
 ﻿using AM.ApllicationCore.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,45 +10,59 @@ using System.Threading.Tasks;
 namespace AM.ApllicationCore.Service
 {
     public class Service<TEntity> : IServices<TEntity> where TEntity : class
+
     {
+        private IGenericRepository<TEntity> _repository; 
+        private IUnitOfWork _unitOfWork;
+        public Service(IUnitOfWork unitOfWork)
+        {
+            _repository =unitOfWork.Repository<TEntity>();
+            _unitOfWork = unitOfWork;
+        }
+
         public void Add(TEntity entity)
         {
-            throw new NotImplementedException();
+           _repository.Add(entity);
+        }
+
+        public void Commit()
+        {
+           _unitOfWork.Save();
         }
 
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            _repository.Delete(entity);
         }
 
         public void Delete(Expression<Func<TEntity, bool>> where)
         {
-            throw new NotImplementedException();
+           _repository.Delete(where);
         }
 
         public TEntity Get(Expression<Func<TEntity, bool>> where)
         {
-            throw new NotImplementedException();
+            return _repository.Get(where);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+           return _repository.GetAll();
         }
 
         public TEntity GetById(params object[] keyValues)
         {
-            throw new NotImplementedException();
+           return _repository.GetById(keyValues);
         }
 
         public IEnumerable<TEntity> GetMany(Expression<Func<TEntity, bool>> where)
         {
-            throw new NotImplementedException();
+           return _repository.GetMany(where);
         }
 
         public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            _repository.Update(entity);
         }
-    }
+    } 
 }
