@@ -173,10 +173,10 @@ public double DurationAverage(string destination)
 
          }
         //IGenericRepository<Flight> genericRepository; 
-        IUnitOfWork _unitOfWork;
+        //IUnitOfWork _unitOfWork;
         public ServiceFlight(IUnitOfWork unitOfWork ): base(unitOfWork)
         {
-           _unitOfWork=unitOfWork;
+          //_unitOfWork =unitOfWork;
 
         }
        /* public void Add(Flight flight)

@@ -12,26 +12,56 @@ namespace AM.ApllicationCore.Service
     public class ServicePlane : Service<Plane>, IServicePlane
     {
        // IGenericRepository<Plane> genericRepository; 
-       IUnitOfWork _unitOfWork;
+      // IUnitOfWork _unitOfWork;
         public ServicePlane( IUnitOfWork unitOfWork):base (unitOfWork)
         {
             // this.genericRepository = genericRepository; 
-            _unitOfWork = unitOfWork;
+         //_unitOfWork = unitOfWork;
 
         }
-       /* public void Add(Plane P)
+
+        public void DeletePlanes()
         {
-            _unitOfWork.Repository<Plane>().Add(P);
+            Delete (p => DateTime.Now.Year - p.ManuFactureDate.Year>10) ;
         }
 
-        public IEnumerable<Plane> GetAll()
+        public IEnumerable<Flight> GetFlights(int n)
         {
-           return _unitOfWork.Repository<Plane>().GetAll();
+            return GetAll()
+                   .OrderByDescending(P => P.PlaneId)
+                   .Take(n)
+                   .SelectMany(p=>p.Flights)
+                   .OrderBy(f=>f.Departure);
+
         }
 
-        public void Remove(Plane P)
+        public IEnumerable<Passenger> GetPassenger(Plane p)
         {
-            _unitOfWork.Repository<Plane>().Delete(P) ;
-        }*/
+            return GetById(p.PlaneId)
+                                     .Flights.SelectMany(f => f.Tickets)
+                                     .Select(t => t.MyPassanger);
+        }
+
+        public bool IsAvailablePlane(Flight flight, int n)
+        {
+            
+            int capacity = Get(p => p.Flights.Contains(flight) == true).Capacity; 
+            int nbTicket=flight.Tickets.Count;
+             return capacity>=nbTicket+n;
+        }
+        /* public void Add(Plane P)
+{
+    _unitOfWork.Repository<Plane>().Add(P);
+}
+
+public IEnumerable<Plane> GetAll()
+{
+   return _unitOfWork.Repository<Plane>().GetAll();
+}
+
+public void Remove(Plane P)
+{
+    _unitOfWork.Repository<Plane>().Delete(P) ;
+}*/
     }
 }
