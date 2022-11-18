@@ -10,7 +10,7 @@ namespace AM.ApplicationCore.Domain
 {
     public class Flight
     {
-        public string? Destination { get; set; }
+        public string? Destination { get; set; } // ?  veut dire non obligatoire
         public string? Departure { get; set; }
         public DateTime FlightDate { get; set; }
         public int FlightId { get; set; }
