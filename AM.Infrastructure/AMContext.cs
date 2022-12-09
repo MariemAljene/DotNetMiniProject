@@ -16,7 +16,7 @@ namespace AM.Infrastructure
         {
            optionsBuilder.UseLazyLoadingProxies();//pour pouvoir acceder FLight.Capacity par exemple et apres rendre virtual les prop de navigation
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;
-            Initial Catalog=MariemAljeneDB;Integrated Security=true");
+            Initial Catalog=MariemAljeneDB;Integrated Security=true;MultipleActiveResultSets=true") ;
             base.OnConfiguring(optionsBuilder);
 
         } 
