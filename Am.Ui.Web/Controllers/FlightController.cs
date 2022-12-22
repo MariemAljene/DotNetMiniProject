@@ -29,7 +29,7 @@ namespace Am.Ui.Web.Controllers
         // GET: FlightController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(servicesFlight.GetById(id));
         }
 
         // GET: FlightController/Create
@@ -42,13 +42,25 @@ namespace Am.Ui.Web.Controllers
         // POST: FlightController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Flight collection)
+        public ActionResult Create(Flight collection,IFormFile Airline)
         {
             try
             {
+                if (Airline != null)
+                {
+                    var path = Path.Combine(Directory.GetCurrentDirectory(),
+
+                    "wwwroot", "Uploads", Airline.FileName);
+
+                    Stream stream = new FileStream(path, FileMode.Create);
+                    Airline.CopyTo(stream);
+                    collection.Airline = Airline.FileName;
+                }
+
                 servicesFlight.Add(collection);
                 servicesFlight.Commit();
                 return RedirectToAction(nameof(Index));
+
             }
             catch
             {
@@ -59,16 +71,19 @@ namespace Am.Ui.Web.Controllers
         // GET: FlightController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(servicesFlight.GetById(id)); 
+
         }
 
         // POST: FlightController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Flight collection)
         {
             try
             {
+                servicesFlight.Update(collection);
+                servicesFlight.Commit();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -80,16 +95,18 @@ namespace Am.Ui.Web.Controllers
         // GET: FlightController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(servicesFlight.GetById (id));
         }
 
         // POST: FlightController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Flight collection)
         {
             try
             {
+                servicesFlight.Delete(collection);
+                servicesFlight.Commit();
                 return RedirectToAction(nameof(Index));
             }
             catch

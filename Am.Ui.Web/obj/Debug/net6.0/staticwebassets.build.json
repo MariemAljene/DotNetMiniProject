@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "S+ibFks4t971I6Z0FHY5jtUOHkiTUI39JIe3PpVVbgE=",
+  "Hash": "fZUkD/GO1NYAYsK8JGVUkpll2Wc676aavonFlAzF3Xs=",
   "Source": "Am.Ui.Web",
   "BasePath": "_content/Am.Ui.Web",
   "Mode": "Default",
@@ -1069,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\marie\\source\\repos\\AirportManager\\Am.Ui.Web\\wwwroot\\Uploads\\Screenshot 2022-11-22 214642.png",
+      "SourceId": "Am.Ui.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\marie\\source\\repos\\AirportManager\\Am.Ui.Web\\wwwroot\\",
+      "BasePath": "_content/Am.Ui.Web",
+      "RelativePath": "Uploads/Screenshot 2022-11-22 214642.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Screenshot 2022-11-22 214642.png"
     }
   ]
 }

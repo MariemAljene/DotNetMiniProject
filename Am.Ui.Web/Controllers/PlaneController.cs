@@ -21,7 +21,7 @@ namespace Am.Ui.Web.Views
         // GET: PlaneController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(servicePlane.GetById(id));
         }
 
         // GET: PlaneController/Create

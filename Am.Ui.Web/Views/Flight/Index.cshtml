@@ -70,7 +70,8 @@
                 @Html.DisplayFor(modelItem => item.MyPlane.PlaneId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Airline)
+
+                <img src="~/Uploads/@item.Airline" width="50" height="50"> 
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.FlightId">Edit</a> |
